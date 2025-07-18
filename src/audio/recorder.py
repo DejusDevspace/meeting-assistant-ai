@@ -44,10 +44,10 @@ class AudioRecorder:
         self.recording_thread = None
 
         # Callbacks for recording actions
-        # self.on_recording_start: Optional[Callable] = None
-        # self.on_recording_stop: Optional[Callable] = None
-        # self.on_recording_pause: Optional[Callable] = None
-        # self.on_error: Optional[Callable] = None
+        self.on_recording_start: Optional[Callable] = None
+        self.on_recording_stop: Optional[Callable] = None
+        self.on_recording_pause: Optional[Callable] = None
+        self.on_error: Optional[Callable] = None
 
     def create_session(self, session_name: str = None) -> RecordingSession:
         """Create a new recording session"""
@@ -114,8 +114,8 @@ class AudioRecorder:
             self.current_session.status = "saved"
             self.current_session.duration = len(self.audio_data) / self.config.sample_rate
 
-            # if self.on_recording_stop:
-            #     self.on_recording_stop(self.current_session)
+            if self.on_recording_stop:
+                self.on_recording_stop(self.current_session)
 
             print(f"Recording stopped and saved: {self.current_session.file_path}")
             return self.current_session
@@ -153,10 +153,10 @@ class AudioRecorder:
         except Exception as e:
             self.is_recording = False
             print("error:", e)
-            # if self.on_error:
-            #     self.on_error(f"Recording error: {str(e)}")
-            # else:
-            #     print(f"Recording error: {str(e)}")
+            if self.on_error:
+                self.on_error(f"Recording error: {str(e)}")
+            else:
+                print(f"Recording error: {str(e)}")
 
     def _save_audio_file(self):
         """Save recorded audio data to file"""
@@ -179,7 +179,7 @@ class AudioRecorder:
         except Exception as e:
             error_msg = f"Error saving audio file: {str(e)}"
             print("error:", error_msg)
-            # if self.on_error:
-            #     self.on_error(error_msg)
-            # else:
-            #     print(error_msg)
+            if self.on_error:
+                self.on_error(error_msg)
+            else:
+                print(error_msg)

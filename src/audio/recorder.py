@@ -89,8 +89,8 @@ class AudioRecorder:
         )
         self.recording_thread.start()
 
-        # if self.on_recording_start:
-        #     self.on_recording_start(session)
+        if self.on_recording_start:
+            self.on_recording_start(session)
 
         print(f"Recording started: {session.session_id}")
         return session

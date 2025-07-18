@@ -66,7 +66,7 @@ class AudioRecorder:
         )
         return session
 
-    def start_recording(self, session: RecordingSession = None, device_id: int = None):
+    def start_recording(self, session: RecordingSession = None, device_id: int = None) -> RecordingSession:
         """Start recording audio"""
         if self.is_recording:
             raise RuntimeError("Recording is already in progress")
@@ -122,7 +122,7 @@ class AudioRecorder:
 
         return None
 
-    def _record_audio(self, device_id: int = None):
+    def _record_audio(self, device_id: int = None) -> None:
         """Internal method to handle audio recording"""
         try:
             def audio_callback(
@@ -158,7 +158,7 @@ class AudioRecorder:
             else:
                 print(f"Recording error: {str(e)}")
 
-    def _save_audio_file(self):
+    def _save_audio_file(self) -> None:
         """Save recorded audio data to file"""
         if not self.audio_data or not self.current_session:
             return

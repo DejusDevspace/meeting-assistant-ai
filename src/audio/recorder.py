@@ -132,10 +132,10 @@ class AudioRecorder:
         """Internal method to handle audio recording."""
         try:
             def audio_callback(
-                    indata: np.ndarray,
-                    frames: int,
-                    time_,
-                    status: CallbackFlags
+                indata: np.ndarray,
+                frames: int,
+                time_,
+                status: CallbackFlags
             ) -> None:
                 if status:
                     print(f"Audio callback status: {status}")
@@ -145,12 +145,12 @@ class AudioRecorder:
 
             # Start audio stream
             with sd.InputStream(
-                    device=device_id,
-                    channels=self.config.channels,
-                    samplerate=self.config.sample_rate,
-                    dtype=self.config.dtype,
-                    callback=audio_callback,
-                    blocksize=self.config.chunk_size
+                device=device_id,
+                channels=self.config.channels,
+                samplerate=self.config.sample_rate,
+                dtype=self.config.dtype,
+                callback=audio_callback,
+                blocksize=self.config.chunk_size
             ):
                 print("Recording... Press Ctrl+C to stop or use stop_recording()")
                 while self.is_recording:

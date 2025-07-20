@@ -32,6 +32,7 @@ class AudioRecorder:
     """Audio recording class to handle core recording functionalities"""
 
     def __init__(self, config: AudioConfig = None, output_dir: str = "data/audio/raw"):
+        """Initialize the AudioRecorder class and define class attributes."""
         self.config = config or AudioConfig()
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -50,7 +51,7 @@ class AudioRecorder:
         self.on_error: Optional[Callable] = None
 
     def create_session(self, session_name: str = None) -> RecordingSession:
-        """Create a new recording session"""
+        """Create a new recording session."""
         if session_name is None:
             session_name = f"recording_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
@@ -67,7 +68,7 @@ class AudioRecorder:
         return session
 
     def start_recording(self, session: RecordingSession = None, device_id: int = None) -> RecordingSession:
-        """Start recording audio"""
+        """Start recording audio."""
         if self.is_recording:
             raise RuntimeError("Recording is already in progress")
 
@@ -96,7 +97,7 @@ class AudioRecorder:
         return session
 
     def stop_recording(self) -> Optional[RecordingSession]:
-        """Stop recording and save file"""
+        """Stop recording and save file."""
         if not self.is_recording:
             print("No recording in progress")
             return None
@@ -123,7 +124,7 @@ class AudioRecorder:
         return None
 
     def _record_audio(self, device_id: int = None) -> None:
-        """Internal method to handle audio recording"""
+        """Internal method to handle audio recording."""
         try:
             def audio_callback(
                     indata: np.ndarray,
@@ -159,7 +160,7 @@ class AudioRecorder:
                 print(f"Recording error: {str(e)}")
 
     def _save_audio_file(self) -> None:
-        """Save recorded audio data to file"""
+        """Save recorded audio data to file."""
         if not self.audio_data or not self.current_session:
             return
 

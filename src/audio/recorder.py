@@ -33,9 +33,9 @@ class AudioRecorder:
     """Audio recording class to handle core recording functionalities"""
 
     def __init__(
-            self,
-            config: AudioConfig = None,
-            output_dir: str = settings.AUDIO_RECORDING_DEFAULT_PATH
+        self,
+        config: AudioConfig = None,
+        output_dir: str = settings.AUDIO_RECORDING_DEFAULT_PATH
     ):
         """Initialize the AudioRecorder class and define class attributes."""
         self.config = config or AudioConfig()

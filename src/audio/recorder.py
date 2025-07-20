@@ -8,6 +8,7 @@ import numpy as np
 import sounddevice as sd
 import wave
 from sounddevice import CallbackFlags
+from src.settings import settings
 
 
 @dataclass
@@ -31,7 +32,11 @@ class RecordingSession:
 class AudioRecorder:
     """Audio recording class to handle core recording functionalities"""
 
-    def __init__(self, config: AudioConfig = None, output_dir: str = "data/audio/raw"):
+    def __init__(
+            self,
+            config: AudioConfig = None,
+            output_dir: str = settings.AUDIO_RECORDING_DEFAULT_PATH
+    ):
         """Initialize the AudioRecorder class and define class attributes."""
         self.config = config or AudioConfig()
         self.output_dir = Path(output_dir)

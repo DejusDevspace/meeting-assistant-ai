@@ -1,6 +1,7 @@
 import os
 from groq import Groq
 from typing import Optional
+from src.settings import settings
 
 
 class AudioTranscriber:
@@ -24,5 +25,5 @@ class AudioTranscriber:
     def client(self) -> Groq:
         """Create Groq client or get client instance."""
         if self._client is None:
-            self._client = Groq()
+            self._client = Groq(api_key=settings.GROQ_API_KEY)
         return self._client

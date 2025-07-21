@@ -9,6 +9,6 @@ class Settings(BaseSettings):
 
     GROQ_API_KEY: str
     TRANSCRIBER_MODEL_NAME: str = "whisper-large-v3-turbo"
-    AUDIO_RECORDING_DEFAULT_PATH = str = "data/audio/raw"
+    AUDIO_RECORDING_DEFAULT_PATH: str = "data/audio/raw"
 
 settings = Settings()

@@ -623,6 +623,7 @@ name = "meeting-assistant-app"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "groq" },
     { name = "ipykernel" },
     { name = "langchain" },
     { name = "langchain-community" },
@@ -634,6 +635,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "groq", specifier = ">=0.30.0" },
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "langchain", specifier = ">=0.3.26" },
     { name = "langchain-community", specifier = ">=0.3.27" },

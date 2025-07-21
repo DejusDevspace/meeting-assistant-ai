@@ -2,6 +2,7 @@ import os
 from groq import Groq
 from typing import Optional
 from src.settings import settings
+from src.core.exceptions import AudioTranscriptionError
 
 
 class AudioTranscriber:
@@ -28,6 +29,23 @@ class AudioTranscriber:
             self._client = Groq(api_key=settings.GROQ_API_KEY)
         return self._client
 
-    async def transcribe(self, audio_file: str) -> str:
+    async def transcribe(self, file_path: str) -> str:
         """Transcribe audio to text using Groq's Whisper model"""
-        pass
+
+        try:
+            # Open the audio file
+            with open(file_path, "rb") as audio_file:
+                # Create a transcription of the audio file
+                transcription = self.client.audio.transcriptions.create(
+                    file=audio_file,
+                    model=settings.TRANSCRIBER_MODEL_NAME,
+                    language="en",
+                    response_format="text",
+                )
+
+            if not transcription:
+                raise AudioTranscriptionError("No transcription data available")
+
+            return transcription
+        except Exception as e:
+            raise AudioTranscriptionError(f"Audio transcription failed: {str(e)}") from e

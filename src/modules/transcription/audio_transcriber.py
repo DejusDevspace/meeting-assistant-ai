@@ -27,3 +27,7 @@ class AudioTranscriber:
         if self._client is None:
             self._client = Groq(api_key=settings.GROQ_API_KEY)
         return self._client
+
+    async def transcribe(self, audio_file: str) -> str:
+        """Transcribe audio to text using Groq's Whisper model"""
+        pass

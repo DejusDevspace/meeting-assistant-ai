@@ -25,7 +25,7 @@ async def main():
     # print("\nNumber of available audio devices:", len(devices))
 
     transcriber = AudioTranscriber()
-    recorder = AudioRecorder(output_dir="src/data/audio/raw")
+    recorder = AudioRecorder(output_dir="data/audio/raw")
     recorder.on_recording_start = on_start
     recorder.on_recording_stop = on_stop
 

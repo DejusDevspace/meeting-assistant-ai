@@ -1,9 +1,12 @@
 import os
+from dotenv import load_dotenv
 from groq import Groq
 from typing import Optional
 from src.settings import settings
 from src.core.exceptions import AudioTranscriptionError
 
+# Load environment variables
+_ = load_dotenv()
 
 class AudioTranscriber:
     """A class to handle audio transcription using the Whisper model from Groq."""
@@ -14,7 +17,7 @@ class AudioTranscriber:
     def __init__(self):
         """Initialize the AudioTranscriber class and validate required environment variables."""
         self._validate_env_vars()
-        self._client = Optional[Groq]
+        self._client: Optional[Groq] = None
 
     def _validate_env_vars(self) -> None:
         """Validate required environment variables."""

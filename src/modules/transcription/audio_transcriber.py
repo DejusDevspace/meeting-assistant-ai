@@ -39,6 +39,7 @@ class AudioTranscriber:
             # Open the audio file
             with open(file_path, "rb") as audio_file:
                 # Create a transcription of the audio file
+                print("Transcribing audio...")
                 transcription = self.client.audio.transcriptions.create(
                     file=audio_file,
                     model=settings.TRANSCRIBER_MODEL_NAME,

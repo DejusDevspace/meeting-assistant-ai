@@ -33,4 +33,3 @@ class Summarizer:
 
     async def summarize(self, text: str) -> str:
         pass
-    

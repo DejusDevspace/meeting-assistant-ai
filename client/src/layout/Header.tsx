@@ -28,7 +28,7 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
                 activeTab === "dashboard"
                   ? "bg-blue-100 text-blue-700"
                   : "text-gray-600 hover:text-gray-900"
-              }`}
+              } cursor-pointer`}
             >
               Dashboard
             </button>
@@ -38,7 +38,7 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
                 activeTab === "record"
                   ? "bg-blue-100 text-blue-700"
                   : "text-gray-600 hover:text-gray-900"
-              }`}
+              } cursor-pointer`}
             >
               Record
             </button>
@@ -48,7 +48,7 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
                 activeTab === "meetings"
                   ? "bg-blue-100 text-blue-700"
                   : "text-gray-600 hover:text-gray-900"
-              }`}
+              } cursor-pointer`}
             >
               Meetings
             </button>

@@ -1,9 +1,9 @@
 from src.core.prompts import SUMMARIZER_PROMPT_V2
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from helpers import get_summary_model
+from langchain_groq import ChatGroq
 
-def get_transcript_summary_chain(transcript: str):
-    model = get_summary_model()
+def get_transcript_summary_chain(model: ChatGroq, transcript: str):
     system_message = SUMMARIZER_PROMPT_V2
     # Add transcript to system message for processing
     system_message += f"\n\nTranscript of the meeting the user just attended: {transcript}"

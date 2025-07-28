@@ -1,3 +1,7 @@
+##########################################################
+# File for testing module functionalities across the app #
+##########################################################
+
 from datetime import datetime
 import time
 from src.audio import AudioRecorder

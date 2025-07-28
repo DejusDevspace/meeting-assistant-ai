@@ -35,7 +35,7 @@ async def main():
         session = recorder.start_recording()
 
         # Record for 5 seconds
-        time.sleep(5)
+        time.sleep(15)
 
         final_session = recorder.stop_recording()
 
@@ -45,8 +45,8 @@ async def main():
             print(f"Duration: {final_session.duration:.2f} seconds")
             print(f"Valid file: {validate_audio_file(final_session.file_path)}")
 
-        transcription = await transcriber.transcribe(final_session.file_path)
-        print("\n\nAudio transcription:\n {}".format(transcription))
+        # transcription = await transcriber.transcribe(final_session.file_path)
+        # print("\n\nAudio transcription:\n {}".format(transcription))
 
 
     except KeyboardInterrupt:

@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     GROQ_API_KEY: str
     TRANSCRIBER_MODEL_NAME: str = "whisper-large-v3-turbo"
-    SUMMARIZER_MODEL_NAME: str = ""
+    SUMMARIZER_MODEL_NAME: str = "llama-3.3-70b-versatile"
     AUDIO_RECORDING_DEFAULT_PATH: str = "../data/audio/raw"
 
 settings = Settings()

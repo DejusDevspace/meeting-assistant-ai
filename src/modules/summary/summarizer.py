@@ -1,8 +1,9 @@
 import os
 from dotenv import load_dotenv
-from groq import Groq
+from langchain_groq import ChatGroq
 from src.settings import settings
 from typing import Optional
+from src.utils.helpers import get_summary_model
 
 # Load environment variables
 _ = load_dotenv()
@@ -16,7 +17,7 @@ class Summarizer:
     def __init__(self):
         """Initialize the Summarizer class and validate required environment variables."""
         self._validate_env_vars()
-        self._client: Optional[Groq] = None
+        self._client: Optional[ChatGroq] = None
 
     def _validate_env_vars(self) -> None:
         """Validate required environment variables."""
@@ -25,10 +26,10 @@ class Summarizer:
             raise ValueError(f"Required environment variables: {', '.join(missing_vars)}")
 
     @property
-    def client(self) -> Groq:
+    def client(self) -> ChatGroq:
         """Create Groq client or get client instance."""
         if self._client is None:
-            self._client = Groq(api_key=settings.GROQ_API_KEY)
+            self._client = get_summary_model()
         return self._client
 
     async def summarize(self, text: str) -> str:

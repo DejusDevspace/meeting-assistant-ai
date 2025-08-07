@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./layout/Header";
 import DashboardMain from "./dashboard/DashboardMain";
 import Footer from "./layout/Footer";
+import RecordingMain from "./recording/RecordingMain";
 
 function App() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -15,7 +16,7 @@ function App() {
         {activeTab === "dashboard" && (
           <DashboardMain setActiveTab={setActiveTab} />
         )}
-        {activeTab === "record" && "Record Component Placeholder"}
+        {activeTab === "record" && <RecordingMain />}
         {activeTab === "meetings" && "Meetings Component Placeholder"}
       </main>
 

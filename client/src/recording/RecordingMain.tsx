@@ -47,15 +47,17 @@ const RecordingMain = () => {
         <CardContent className="space-y-6">
           {/* Recording Controls */}
           <div className="text-center space-y-4">
-            <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center relative">
+            <div
+              className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full cursor-pointer flex items-center justify-center relative"
+              onClick={isRecording ? stopRecording : startRecording}
+            >
               {isRecording && (
                 <div className="absolute inset-0 rounded-full border-4 border-white animate-pulse"></div>
               )}
               <Button
                 size="lg"
                 variant={isRecording ? "destructive" : "default"}
-                className="w-20 h-20 rounded-full"
-                onClick={isRecording ? stopRecording : startRecording}
+                className="w-20 h-20 rounded-full cursor-pointer"
               >
                 {isRecording ? (
                   <Square className="w-8 h-8" />
